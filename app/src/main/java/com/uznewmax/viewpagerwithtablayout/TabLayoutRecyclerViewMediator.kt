@@ -1,10 +1,13 @@
 package com.uznewmax.viewpagerwithtablayout
 
+import android.util.TypedValue
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
+import com.uznewmax.viewpagerwithtablayout.utils.CenterLayoutManager
+import com.uznewmax.viewpagerwithtablayout.utils.showLog
 
 /**
  * Created by Shivansh ON 13/07/20.
@@ -32,6 +35,16 @@ class TabLayoutRecyclerViewMediator(
         object : LinearSmoothScroller(recyclerView.context) {
             override fun getVerticalSnapPreference(): Int {
                 return SNAP_TO_START
+            }
+
+            override fun calculateDtToFit(
+                viewStart: Int,
+                viewEnd: Int,
+                boxStart: Int,
+                boxEnd: Int,
+                snapPreference: Int
+            ): Int {
+                return boxStart - viewStart
             }
         }
 
@@ -72,24 +85,39 @@ class TabLayoutRecyclerViewMediator(
         // Add tab selected listener to update recycler view when a tab is selected
         tabSelectedListener = object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
+                showLog("tabProgrammaticallySelected=$tabProgrammaticallySelected")
                 if (!tabProgrammaticallySelected) {
                     val itemPosition = tab?.position?.let { mapHeaderPositionToItemPosition(it) }
+                    showLog("onTabSelected: itemPosition=$itemPosition")
                     if (itemPosition != null) {
                         smoothScroller.targetPosition = itemPosition
                         isProgrammaticallyScrolled = true
                         recyclerView.layoutManager?.startSmoothScroll(smoothScroller)
                     }
                 } else tabProgrammaticallySelected = false
+                tab?.setTextSize(14, R.color.black)
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
                 tabProgrammaticallySelected = false
+                tab?.setTextSize(14, R.color.black)
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                tab?.setTextSize(13, R.color.primaryBlack)
+            }
         }
         tabLayout.addOnTabSelectedListener(tabSelectedListener as TabLayout.OnTabSelectedListener)
         populateTabsLayout()
+    }
+
+    fun TabLayout.Tab.setTextSize(size: Int, textColor: Int) {
+        val textView = customView?.findViewById<TextView>(R.id.tvHeader)
+        textView?.let { tv ->
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
+            tv.setTextColor(textColor)
+        }
+
     }
 
     fun detach() {
@@ -115,7 +143,7 @@ class TabLayoutRecyclerViewMediator(
     private inner class TabLayoutOnPageChangeCallback : RecyclerView.OnScrollListener() {
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-            if (!isProgrammaticallyScrolled && recyclerView.layoutManager is LinearLayoutManager) {
+            if (!isProgrammaticallyScrolled && recyclerView.layoutManager is CenterLayoutManager) {
                 val visibleItemPosition =
                     (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
                 mapItemPositionToHeaderPosition(visibleItemPosition)?.let { selectTab(it) }
@@ -126,7 +154,7 @@ class TabLayoutRecyclerViewMediator(
             if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                 isProgrammaticallyScrolled = false
                 val visibleItemHeader =
-                    mapItemPositionToHeaderPosition((recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition())
+                    mapItemPositionToHeaderPosition((recyclerView.layoutManager as CenterLayoutManager).findFirstVisibleItemPosition())
                 if (visibleItemHeader != null && tabLayout.selectedTabPosition != visibleItemHeader)
                     selectTab(visibleItemHeader)
             }

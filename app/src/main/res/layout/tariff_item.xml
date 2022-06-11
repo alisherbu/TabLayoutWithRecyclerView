@@ -26,6 +26,7 @@
             android:id="@+id/ivTariffImage"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:src="@drawable/car_tariff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +58,7 @@
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTariffName"
-            tools:text="4 min" />
+            android:text="4 min" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -89,7 +90,7 @@
                 android:textColor="@color/tariff_text_selector"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                tools:text="40,00сум"/>
+                android:text="15,000 сум"/>
         </LinearLayout>
 
 

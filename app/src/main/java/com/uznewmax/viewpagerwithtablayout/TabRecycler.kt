@@ -3,6 +3,8 @@ package com.uznewmax.viewpagerwithtablayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
+import com.uznewmax.viewpagerwithtablayout.utils.Tariff
+import com.uznewmax.viewpagerwithtablayout.utils.showLog
 
 /**
  * Created by Alisher Kazakbaev on 11.06.2022.
@@ -46,9 +48,9 @@ class TabRecycler {
         return this
     }
 
-    fun setData(data: List<List<Any>>): TabRecycler {
+    fun setData(data: List<List<Tariff>>): TabRecycler {
         this.data = data
-        recyclerView?.adapter = TabRecyclerAdapter(data.map { it.map { it.toString() } })
+        recyclerView?.adapter = TabRecyclerAdapter(data)
         return this
     }
 

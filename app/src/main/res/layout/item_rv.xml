@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".SecondActivity">
+    >
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewItem"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -15,6 +15,6 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/country_card" />
+        tools:listitem="@layout/tariff_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
