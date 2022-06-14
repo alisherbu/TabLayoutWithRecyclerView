@@ -16,3 +16,14 @@ fun dpToPx(dp: Int): Int {
 }
 
 inline val Int.dp: Float get() = this * Resources.getSystem().displayMetrics.density
+
+fun Int.changeFormat(): String {
+    val num = this.toLong().toString()
+    var s = ""
+    val sz = num.length
+    for (i in 0 until sz) {
+        if (i != 0 && (i - sz % 3) % 3 == 0) s += ' '
+        s += num[i]
+    }
+    return "$s sum"
+}

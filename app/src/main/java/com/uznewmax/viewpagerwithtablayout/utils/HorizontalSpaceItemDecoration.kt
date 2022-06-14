@@ -27,8 +27,8 @@ class HorizontalSpaceItemDecoration(
         if (parent.getChildAdapterPosition(view) == 2){
             outRect.left = startWidth
         }
-        if (parent.getChildAdapterPosition(view) == state.itemCount - 1) {
-            outRect.right = endWidth
-        }
+//        if (parent.getChildAdapterPosition(view) == state.itemCount - 1) {
+//            outRect.right = endWidth
+//        }
     }
 }

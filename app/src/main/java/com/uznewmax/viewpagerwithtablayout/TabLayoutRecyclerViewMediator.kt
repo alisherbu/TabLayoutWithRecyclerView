@@ -95,29 +95,28 @@ class TabLayoutRecyclerViewMediator(
                         recyclerView.layoutManager?.startSmoothScroll(smoothScroller)
                     }
                 } else tabProgrammaticallySelected = false
-                tab?.setTextSize(14, R.color.black)
+                tab?.setTextSize(14f, R.color.black)
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
                 tabProgrammaticallySelected = false
-                tab?.setTextSize(14, R.color.black)
+                tab?.setTextSize(14f, R.color.black)
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                tab?.setTextSize(13, R.color.primaryBlack)
+                tab?.setTextSize(13f, R.color.primaryBlack)
             }
         }
         tabLayout.addOnTabSelectedListener(tabSelectedListener as TabLayout.OnTabSelectedListener)
         populateTabsLayout()
     }
 
-    fun TabLayout.Tab.setTextSize(size: Int, textColor: Int) {
+    fun TabLayout.Tab.setTextSize(size: Float, textColor: Int) {
         val textView = customView?.findViewById<TextView>(R.id.tvHeader)
         textView?.let { tv ->
-            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, size)
             tv.setTextColor(textColor)
         }
-
     }
 
     fun detach() {
