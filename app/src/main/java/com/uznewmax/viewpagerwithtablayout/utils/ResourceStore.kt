@@ -18,7 +18,7 @@ interface ResourceStore {
             Tariff(name = "Cargo +", eta = 10, total_price = 100_000),
         )
         val itemList = listOf(
-            taxi, business, delivery
+            taxi, business, delivery, business, delivery, taxi
         )
     }
 

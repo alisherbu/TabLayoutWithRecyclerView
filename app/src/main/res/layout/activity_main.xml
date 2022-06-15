@@ -7,85 +7,6 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout1"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_marginStart="16dp"
-            android:isScrollContainer="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabBackground="@drawable/tab_color_selector"
-            app:tabGravity="start"
-            app:tabIndicatorAnimationMode="elastic"
-            app:tabIndicatorColor="@null"
-            app:tabIndicatorFullWidth="false"
-            app:tabIndicatorHeight="0dp"
-            app:tabMode="auto"
-
-            app:tabRippleColor="@null" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:isScrollContainer="true"
-            android:orientation="horizontal"
-            android:overScrollMode="never"
-            app:layoutManager=".utils.CenterLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/tab_layout1" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout2"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_marginStart="16dp"
-            android:isScrollContainer="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabBackground="@drawable/tab_color_selector"
-            app:tabGravity="start"
-            app:tabIndicatorAnimationMode="elastic"
-            app:tabIndicatorColor="@null"
-            app:tabIndicatorFullWidth="false"
-            app:tabIndicatorHeight="0dp"
-            app:tabMode="auto"
-
-            app:tabRippleColor="@null" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-
-            android:orientation="horizontal"
-            android:overScrollMode="never"
-            app:layoutManager=".utils.CenterLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/tab_layout2" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,20 +18,23 @@
             android:id="@+id/tab_layout3"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            android:layout_marginStart="16dp"
+
             android:isScrollContainer="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabBackground="@drawable/tab_color_selector"
             app:tabGravity="start"
+            app:tabSelectedTextColor="@color/black"
+            app:tabIndicator="@drawable/tab_background_selected"
             app:tabIndicatorAnimationMode="elastic"
-            app:tabIndicatorColor="@null"
-            app:tabIndicatorFullWidth="false"
-            app:tabIndicatorHeight="0dp"
-            app:tabMode="auto"
+            app:tabIndicatorColor="@color/primaryBlack"
+            app:tabIndicatorHeight="32dp"
+            app:tabTextAppearance="@style/TabLayoutTextAppearance"
+            app:tabIndicatorAnimationDuration="400"
+            app:tabIndicatorGravity="center"
+            app:tabMode="scrollable"
             app:tabRippleColor="@null"
-            app:tabTextColor="@color/black" />
+            app:tabTextColor="@color/primaryBlackText" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager3"

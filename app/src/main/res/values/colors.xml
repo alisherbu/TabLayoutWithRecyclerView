@@ -10,5 +10,6 @@
 
     <color name="shadowedBlack">#706E6E</color>
     <color name="primaryGray">#FF7B7B7B</color>
-    <color name="primaryBlack">#262C2C2C</color>
+    <color name="primaryBlack">#0D2C2C2C</color>
+    <color name="primaryBlackText">#402C2C2C</color>
 </resources>

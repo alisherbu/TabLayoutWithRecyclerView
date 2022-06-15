@@ -15,7 +15,7 @@ fun dpToPx(dp: Int): Int {
     return (dp * Resources.getSystem().displayMetrics.density).toInt()
 }
 
-inline val Int.dp: Float get() = this * Resources.getSystem().displayMetrics.density
+inline val Int.dp: Int get() = this * Resources.getSystem().displayMetrics.density.toInt()
 
 fun Int.changeFormat(): String {
     val num = this.toLong().toString()
